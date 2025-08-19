@@ -2,17 +2,20 @@ package controller
 
 import (
 	"golearn/model"
+	"golearn/service"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type ProductController struct {
-
+	ProductService *service.ProductService
 }
 
-func NewProductController() *ProductController {
-	return &ProductController{}
+func NewProductController(service *service.ProductService) *ProductController {
+	return &ProductController{
+		ProductService: service,
+	}
 }
 
 func (p *ProductController) GetProducts(ctx *gin.Context) {
